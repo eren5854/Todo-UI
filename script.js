@@ -9,7 +9,7 @@ const listContainer = document.getElementById("list-container");
 get();
 showTrueForm();
 function get(){
-    axios.get("http://localhost:5000/api/todo").then(res=>{
+    axios.get("https://todo-api-theta.vercel.app/api/todo").then(res=>{
         todos=res.data.data;
         console.log(todos);
         setUlList();
@@ -17,7 +17,7 @@ function get(){
 }
 
 function deleteTodoFromApi(id){
-    axios.delete('http://localhost:5000/api/todo/'+id).then(res=>{
+    axios.delete('https://todo-api-theta.vercel.app/api/todo/'+id).then(res=>{
         get();
     })
 }
@@ -55,7 +55,7 @@ function save(e){
     const inputElement = document.getElementById("input-box");
     const value = inputElement.value;
     
-        axios.post("http://localhost:5000/api/todo",{name: value}).then(res=>{
+        axios.post("https://todo-api-theta.vercel.app/api/todo",{name: value}).then(res=>{
             get();
             inputElement.value="";
             inputElement.focus();
@@ -97,7 +97,7 @@ function show(i){
 function update(){
     console.log(id);
     const value = updateWorkEl.value;
-    axios.put(`http://localhost:5000/api/todo/${id}`, {name: value, isComplate: isComplate}).then(res=> {
+    axios.put(`https://todo-api-theta.vercel.app/api/todo/${id}`, {name: value, isComplate: isComplate}).then(res=> {
         showTrueForm();
         get();
     })
